@@ -47,17 +47,12 @@ jobs:
           name: igit
           path: builds/igit
 
-      - name: Checkout releases branch
-        uses: actions/checkout@v2
-        with:
-          ref: 'releases'
-          fetch-depth: 0
-
       - name: Commit build
         uses: EndBug/add-and-commit@v9
         with:
           message: "Build executable"
           add: "builds/igit"
+          new_branch: releases
 
   release:
 
