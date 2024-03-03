@@ -22,14 +22,7 @@ class History extends Command
 
         $commits = $this->getCommits();
 
-        $this->table(['Hash', 'Date', 'Message'], array_map(
-            fn (GitLogObject $commit): array => [
-                $commit->hash,
-                $commit->date,
-                $commit->message
-            ],
-            $commits->take(44)->toArray()
-        ));
+        $this->displayHistory($commits->take(44)->toArray());
 
         return Command::SUCCESS;
     }
@@ -37,5 +30,17 @@ class History extends Command
     protected function getCommits(): Collection
     {
         return collect($this->git->log());
+    }
+
+    protected function displayHistory(array $rows): void
+    {
+        $this->table(['Hash', 'Date', 'Message'], array_map(
+            fn(GitLogObject $commit): array => [
+                $commit->date,
+                $commit->hash,
+                $commit->message
+            ],
+            $rows
+        ));
     }
 }
