@@ -32,6 +32,7 @@ class History extends Command
         return collect($this->git->log());
     }
 
+    /** @param array<GitLogObject> $rows */
     protected function displayHistory(array $rows): void
     {
         $this->table(['Hash', 'Date', 'Message'], array_map(
