@@ -47,6 +47,12 @@ jobs:
           name: igit
           path: builds/igit
 
+      - name: Commit build
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: "Build iGit executable"
+          add: "builds/igit"
+
   release:
 
     runs-on: ubuntu-latest
@@ -62,12 +68,12 @@ jobs:
       - name: Create a release
         uses: ncipollo/release-action@v1
         with:
-            artifacts: builds/igit
-            commit: ${{ github.sha }}
-            tag: dev-${{ github.sha }}
-            name: Development Release ${{ github.sha }}
-            body: |
-              **This is a development release for commit ${{ github.sha }}.**
-              
-              It is not intended for production use and may contain bugs or incomplete features.
-            prerelease: true
+          artifacts: builds/igit
+          commit: ${{ github.sha }}
+          tag: dev-${{ github.sha }}
+          name: Development Release ${{ github.sha }}
+          body: |
+            **This is a development release for commit ${{ github.sha }}.**
+            
+            It is not intended for production use and may contain bugs or incomplete features.
+          prerelease: true
