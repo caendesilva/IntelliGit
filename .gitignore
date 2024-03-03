@@ -1,4 +1,4 @@
 *
 !gitignore
-!builds/*
+/builds/*
 !README.md
