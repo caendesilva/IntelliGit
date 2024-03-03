@@ -21,7 +21,7 @@ class Git
 
     public function exec(string $command): string
     {
-        return shell_exec("cd {$this->directory} && $command");
+        return shell_exec("cd {$this->directory} && $command") ?? '';
     }
 
     public function passthru(string $command): void
