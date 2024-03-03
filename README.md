@@ -21,3 +21,11 @@ chmod +x igit && sudo mv igit /usr/local/bin/igit
 curl -L https://raw.githubusercontent.com/caendesilva/IntelliGit/releases/builds/igit -o igit
 chmod +x igit && sudo mv igit /usr/local/bin/igit
 ```
+
+## Usage
+
+For best results, you would use a large terminal. You can resize it automatically using the following command:
+
+```bash
+igit terminal:size
+```
