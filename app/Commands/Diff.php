@@ -13,17 +13,13 @@ class Diff extends Command
     /** @var string */
     protected $description = 'Show the files change in the working directory';
 
-    protected Git $git;
-
-    public function handle(): int
+    public function handle(Git $git): int
     {
-        $this->git = new Git(getcwd());
-
-        if (! $this->git->isGitRepository()) {
+        if (! $git->isGitRepository()) {
             return $this->fatal('Not in a Git repository');
         }
 
-        $diff = $this->git->exec('git diff --color');
+        $diff = $git->exec('git diff --color');
 
         if (empty($diff)) {
             $this->info('No changes! Working tree clean.');
