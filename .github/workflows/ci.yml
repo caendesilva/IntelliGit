@@ -71,7 +71,7 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           message: "Build executable"
-          add: "builds/igit" --force
+          add: "builds/igit --force"
 
       - name: Create a release
         uses: ncipollo/release-action@v1
