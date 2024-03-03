@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
-class GitLogObject extends \ArrayObject
+use ArrayObject;
+
+class GitLogObject extends ArrayObject
 {
     public string $hash;
     public string $date;
