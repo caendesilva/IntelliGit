@@ -33,7 +33,7 @@ class Git
 
     public function log(): array
     {
-        $output = $this->exec('git log --pretty=format:"%h|%ad|%s" --date=iso');
+        $output = $this->exec('git log --pretty=format:"%H|%ad|%s" --date=iso');
 
         return array_map(
             fn (string $line): GitLogObject => new GitLogObject(...explode('|', $line)),
