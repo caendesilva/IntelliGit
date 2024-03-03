@@ -18,6 +18,17 @@ class History extends Command
             return $this->fatal('Not in a Git repository');
         }
 
+        $commits = $this->getCommits();
+
         return Command::SUCCESS;
+    }
+
+    protected function getCommits(): array
+    {
+        $commits = $this->git->log();
+
+        $this->table(['hash', 'date', 'message'], $commits);
+
+        return $commits;
     }
 }
