@@ -3,7 +3,6 @@
 namespace App\Commands;
 
 use App\Commands\Concerns\Command;
-use App\Git;
 
 class History extends Command
 {
@@ -13,9 +12,9 @@ class History extends Command
     /** @var string */
     protected $description = 'Show Git history';
 
-    public function handle(Git $git): int
+    public function handle(): int
     {
-        if (! $git->isGitRepository()) {
+        if (! $this->git->isGitRepository()) {
             return $this->fatal('Not in a Git repository');
         }
 
