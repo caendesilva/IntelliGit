@@ -14,9 +14,14 @@ class OptimizeTerminalSizeCommand extends Command
 
     public function handle(): int
     {
-        $this->output->write("\e[8;50;164t");
-        $this->info('Terminal size optimized to 50x164');
+        $this->resize('164', '50');
 
         return Command::SUCCESS;
+    }
+
+    public function resize(string $w, string $h): void
+    {
+        $this->output->write("\e[8;{$h};{$w}t");
+        $this->info("Terminal size optimized to {$w}x{$h}");
     }
 }
