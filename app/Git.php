@@ -13,4 +13,9 @@ class Git
     {
         $this->directory = $directory;
     }
+
+    public function isGitRepository(): bool
+    {
+        return is_dir($this->directory . '/.git');
+    }
 }
