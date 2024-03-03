@@ -26,7 +26,7 @@ class Diff extends Command
         $diff = $this->git->exec('git diff --color');
 
         if (empty($diff)) {
-            $this->info('No changes');
+            $this->info('No changes! Working tree clean.');
         } else {
             $this->line($diff);
         }
