@@ -4,6 +4,7 @@ namespace App\Commands;
 
 use App\Commands\Concerns\Command;
 use App\Models\GitLogObject;
+use Illuminate\Support\Collection;
 
 class History extends Command
 {
@@ -29,8 +30,8 @@ class History extends Command
         return Command::SUCCESS;
     }
 
-    protected function getCommits(): array
+    protected function getCommits(): Collection
     {
-        return $this->git->log();
+        return collect($this->git->log());
     }
 }
