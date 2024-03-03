@@ -33,7 +33,7 @@ jobs:
       run: echo ${{ steps.vars.outputs.sha_short }}
       
     - name: Build executable
-      run: php igit standalone:build --build-version="${{ steps.vars.outputs.sha_short }}"
+      run: php igit standalone:build --build-version ${{ steps.vars.outputs.sha_short }}
 
     - name: Verify executable
       run: php builds/igit
