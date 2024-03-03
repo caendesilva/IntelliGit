@@ -11,6 +11,8 @@ class Git
 {
     protected string $directory;
 
+    protected int $coreAbbrev;
+
     public function __construct(string $directory)
     {
         $this->directory = $directory;
@@ -39,5 +41,11 @@ class Git
             fn (string $line): GitLogObject => new GitLogObject(...explode('|', $line)),
             array_filter(explode("\n", $output))
         );
+    }
+
+    /** Get the minimum hash length to uniquely identify a commit. Lazy loaded and cached for the lifecycle. */
+    public function getCoreAbbrev(): int
+    {
+        return $this->coreAbbrev ??= strlen(trim($this->exec('git rev-parse --short HEAD')) ?? '') ?: 7;
     }
 }
