@@ -24,7 +24,7 @@ class History extends Command
 
         $this->table(['Hash', 'Date', 'Message'], array_map(
             fn (GitLogObject $commit): array => [$commit->hash, $commit->date, $commit->message],
-            $commits->toArray()
+            $commits->take(44)->toArray()
         ));
 
         return Command::SUCCESS;
