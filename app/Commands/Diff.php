@@ -23,6 +23,8 @@ class Diff extends Command
             return $this->fatal('Not in a Git repository');
         }
 
+        $this->line($this->git->exec('git diff'));
+
         return Command::SUCCESS;
     }
 }
