@@ -47,12 +47,6 @@ jobs:
           name: igit
           path: builds/igit
 
-      - name: Commit build
-        uses: EndBug/add-and-commit@v9
-        with:
-          message: "Build executable"
-          add: "builds/igit"
-          new_branch: releases
 
   release:
 
@@ -60,11 +54,21 @@ jobs:
     needs: build
 
     steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: releases
+
       - name: Download executable artifact
         uses: actions/download-artifact@v3
         with:
           name: igit
           path: builds/igit
+
+      - name: Commit build
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: "Build executable"
+          add: "builds/igit"
 
       - name: Create a release
         uses: ncipollo/release-action@v1
