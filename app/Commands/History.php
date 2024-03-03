@@ -3,6 +3,7 @@
 namespace App\Commands;
 
 use App\Commands\Concerns\Command;
+use App\Models\GitLogObject;
 
 class History extends Command
 {
@@ -19,6 +20,11 @@ class History extends Command
         }
 
         $commits = $this->getCommits();
+
+        $this->table(['Hash', 'Date', 'Message'], array_map(
+            fn (GitLogObject $commit): array => [$commit->hash, $commit->date, $commit->message],
+            $commits
+        ));
 
         return Command::SUCCESS;
     }
