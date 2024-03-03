@@ -23,7 +23,13 @@ class Diff extends Command
             return $this->fatal('Not in a Git repository');
         }
 
-        $this->git->passthru('git diff --color');
+        $diff = $this->git->exec('git diff --color');
+
+        if (empty($diff)) {
+            $this->info('No changes');
+        } else {
+            $this->line($diff);
+        }
 
         return Command::SUCCESS;
     }
