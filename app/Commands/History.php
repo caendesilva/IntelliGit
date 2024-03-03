@@ -25,10 +25,6 @@ class History extends Command
 
     protected function getCommits(): array
     {
-        $commits = $this->git->log();
-
-        $this->table(['hash', 'date', 'message'], $commits);
-
-        return $commits;
+        return $this->git->log();
     }
 }
