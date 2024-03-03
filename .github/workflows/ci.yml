@@ -58,6 +58,9 @@ jobs:
         with:
           ref: releases
 
+      - name: Remove old build
+        run: rm -rf builds/igit
+
       - name: Download executable artifact
         uses: actions/download-artifact@v3
         with:
