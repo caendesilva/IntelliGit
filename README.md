@@ -8,7 +8,16 @@ I'm developing this app for myself, to make the specific Git operations I person
 
 ## Installation
 
+### Latest release
+
 ```bash
 curl -L https://github.com/caendesilva/IntelliGit/releases/latest/download/igit -o igit
+chmod +x igit && sudo mv igit /usr/local/bin/igit
+```
+
+### Latest development version
+
+```bash
+curl -L https://raw.githubusercontent.com/caendesilva/IntelliGit/main/builds/igit -o igit
 chmod +x igit && sudo mv igit /usr/local/bin/igit
 ```
