@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-readonly class GitLogObject
+class GitLogObject
 {
     public string $hash;
     public string $date;
