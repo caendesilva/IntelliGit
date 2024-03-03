@@ -14,7 +14,7 @@ class DummyClass extends Command
 
     public function handle(): int
     {
-        $this->info('Dummy command executed!');
+        // TODO: Implement handle() method.
 
         return Command::SUCCESS;
     }
