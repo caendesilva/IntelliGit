@@ -20,7 +20,7 @@ class Diff extends Command
         $this->git = new Git(getcwd());
 
         if (! $this->git->isGitRepository()) {
-            $this->error('Fatal: Not in a Git repository');
+            $this->fatal('Not in a Git repository');
 
             return Command::FAILURE;
         }
