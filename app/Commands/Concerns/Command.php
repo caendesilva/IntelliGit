@@ -6,7 +6,7 @@ abstract class Command extends \LaravelZero\Framework\Commands\Command
 {
     public function fatal(string $message): int
     {
-        $this->line("<error>Fatal</error> <comment>$message</comment>");
+        $this->line("<fg=red>Fatal:</> <comment>$message</comment>");
 
         return Command::FAILURE;
     }
