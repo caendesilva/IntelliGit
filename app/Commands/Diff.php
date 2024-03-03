@@ -3,7 +3,7 @@
 namespace App\Commands;
 
 use App\Git;
-use LaravelZero\Framework\Commands\Command;
+use App\Commands\Concerns\Command;
 
 class Diff extends Command
 {
