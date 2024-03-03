@@ -1,0 +1,40 @@
+name: Continuous Integration 
+
+on:
+  push:
+    branches: [ "main" ]
+ 
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Validate composer.json and composer.lock
+      run: composer validate --strict
+    
+    - name: Set outputs
+      id: vars
+      run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+    - name: Check outputs
+      run: echo ${{ steps.vars.outputs.sha_short }}
+      
+    - name: Build executable
+      run: php igit standalone:build --build-version="${{ steps.vars.outputs.sha_short }}"
+
+    - name: Verify executable
+      run: php builds/igit
+
+    - name: Verify executable version
+      run: php builds/igit --version
+
+    - name: Upload executable artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: igit
+        path: builds/igit
