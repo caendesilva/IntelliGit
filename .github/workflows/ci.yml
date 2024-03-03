@@ -48,7 +48,10 @@ jobs:
           path: builds/igit
 
       - name: Checkout releases branch
-        run: git checkout releases
+        uses: actions/checkout@v2
+        with:
+          ref: 'releases'
+          fetch-depth: 0
 
       - name: Commit build
         uses: EndBug/add-and-commit@v9
