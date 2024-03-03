@@ -23,4 +23,9 @@ class Git
     {
         return shell_exec("cd {$this->directory} && $command");
     }
+
+    public function passthru(string $command): void
+    {
+        passthru("cd {$this->directory} && $command");
+    }
 }
