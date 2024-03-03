@@ -2,7 +2,7 @@
 
 namespace DummyNamespace;
 
-use LaravelZero\Framework\Commands\Command;
+use App\Commands\Concerns\Command;
 
 class DummyClass extends Command
 {
