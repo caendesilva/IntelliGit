@@ -7,5 +7,10 @@ namespace App;
  */
 class Git
 {
-    //
+    protected string $directory;
+
+    public function __construct(string $directory)
+    {
+        $this->directory = $directory;
+    }
 }
