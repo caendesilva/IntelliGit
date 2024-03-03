@@ -10,4 +10,12 @@ abstract class Command extends \LaravelZero\Framework\Commands\Command
 
         return Command::FAILURE;
     }
+
+    // Print with syntax highlighting
+    public function highlight(string $message): void
+    {
+        $highlighted = $message; // Todo
+
+        $this->output->write($highlighted);
+    }
 }
