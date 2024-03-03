@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'version' => substr(app('git.version'), 0, 4+7),
+    'version' => substr(app('git.version'), 0, 4 + 7),
 
     /*
     |--------------------------------------------------------------------------

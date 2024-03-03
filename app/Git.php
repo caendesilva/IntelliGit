@@ -20,7 +20,7 @@ class Git
 
     public function isGitRepository(): bool
     {
-        return is_dir($this->directory . '/.git');
+        return is_dir($this->directory.'/.git');
     }
 
     public function exec(string $command): string

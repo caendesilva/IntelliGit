@@ -2,7 +2,6 @@
 
 namespace App\Commands;
 
-use App\Git;
 use App\Commands\Concerns\Command;
 
 class Diff extends Command
