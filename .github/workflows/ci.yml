@@ -47,6 +47,9 @@ jobs:
           name: igit
           path: builds/igit
 
+      - name: Checkout releases branch
+        run: git checkout releases
+
       - name: Commit build
         uses: EndBug/add-and-commit@v9
         with:
