@@ -17,7 +17,10 @@ jobs:
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
-    
+
+    - name: Install dependencies
+      run: composer install --no-interaction --no-progress --no-suggest --prefer-dist
+
     - name: Set outputs
       id: vars
       run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
