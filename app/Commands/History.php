@@ -35,13 +35,8 @@ class History extends Command
     /** @param array<GitLogObject> $rows */
     protected function displayHistory(array $rows): void
     {
-        $this->table(['Hash', 'Date', 'Message'], array_map(
-            fn (GitLogObject $commit): array => [
-                $commit->date,
-                $commit->hash,
-                $commit->message,
-            ],
-            $rows
-        ));
+        foreach ($rows as $row) {
+            //
+        }
     }
 }
