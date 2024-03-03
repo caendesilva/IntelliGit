@@ -2,7 +2,8 @@
 
 namespace App\Commands;
 
-use LaravelZero\Framework\Commands\Command;
+use App\Commands\Concerns\Command;
+use App\Git;
 
 class History extends Command
 {
@@ -12,9 +13,11 @@ class History extends Command
     /** @var string */
     protected $description = 'Show Git history';
 
-    public function handle(): int
+    public function handle(Git $git): int
     {
-        // Todo
+        if (! $git->isGitRepository()) {
+            return $this->fatal('Not in a Git repository');
+        }
 
         return Command::SUCCESS;
     }
