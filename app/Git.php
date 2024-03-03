@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Models\GitLogObject;
+
 /**
  * Wrapper for the Git integration with the current directory.
  */
@@ -34,7 +36,7 @@ class Git
         $output = $this->exec('git log --pretty=format:"%h|%ad|%s" --date=short');
 
         return array_map(
-            fn (string $line): array => explode('|', $line),
+            fn (string $line): GitLogObject => new GitLogObject(...explode('|', $line)),
             array_filter(explode("\n", $output))
         );
     }
