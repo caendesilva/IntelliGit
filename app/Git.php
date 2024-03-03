@@ -28,4 +28,14 @@ class Git
     {
         passthru("cd {$this->directory} && $command");
     }
+
+    public function log(): array
+    {
+        $output = $this->exec('git log --pretty=format:"%h|%ad|%s" --date=short');
+
+        return array_map(
+            fn (string $line): array => explode('|', $line),
+            array_filter(explode("\n", $output))
+        );
+    }
 }
