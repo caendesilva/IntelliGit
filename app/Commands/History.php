@@ -44,7 +44,7 @@ class History extends Command
     protected function formatDate(Carbon $date): string
     {
         if ($date->isToday()) {
-            return $date->diffForHumans();
+            return str_pad($date->diffForHumans(), 19, ' ');
         }
 
         return $date->format('Y-m-d H:i:s');
