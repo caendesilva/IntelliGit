@@ -48,7 +48,7 @@ class History extends Command
             $hash = "<fg=gray>{$this->formatHash($row->hash)}</>";
             $date = "<fg=gray>{$this->formatDate($row->date)}</>";
 
-            $this->line(sprintf("%s %s %s %s",
+            $this->line(sprintf('%s %s %s %s',
                 $number,
                 $message,
                 $date,
@@ -82,6 +82,6 @@ class History extends Command
 
     protected function formatLineNumber(int|string $number, int $digits): string
     {
-        return str_pad((string)($number + 1), $digits, ' ', STR_PAD_LEFT);
+        return str_pad((string) ($number + 1), $digits, ' ', STR_PAD_LEFT);
     }
 }
