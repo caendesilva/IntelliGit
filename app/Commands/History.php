@@ -38,8 +38,8 @@ class History extends Command
     {
         foreach ($rows as $row) {
             $message = "<fg=default>{$row->message}</>";
-            $hash = "<fg=green>{$row->hash}</>";
-            $date = "<fg=blue>{$this->formatDate($row->date)}</>";
+            $hash = "<fg=gray>{$row->hash}</>";
+            $date = "<fg=gray>{$this->formatDate($row->date)}</>";
 
             $this->line($message);
             $this->line(implode(' ', [$date, $hash]));
