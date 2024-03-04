@@ -42,12 +42,13 @@ class History extends Command
     /** @param  array<GitLogObject>  $rows */
     protected function displayHistory(array $rows): void
     {
-        foreach ($rows as $row) {
+        foreach ($rows as $number => $row) {
+            $number = "<fg=gray>{$this->formatLineNumber($number, strlen(count($rows)))}</>";
             $message = "<fg=default>{$this->formatMessage($row->message)}</>";
             $hash = "<fg=gray>{$this->formatHash($row->hash)}</>";
             $date = "<fg=gray>{$this->formatDate($row->date)}</>";
 
-            $this->line("$message $date $hash");
+            $this->line("$number $message $date $hash");
         }
     }
 
@@ -72,5 +73,10 @@ class History extends Command
         }
 
         return $date->format('Y-m-d H:i:s');
+    }
+
+    protected function formatLineNumber(int|string $number, int $digits): string
+    {
+        return str_pad((string)($number + 1), $digits, ' ', STR_PAD_LEFT);
     }
 }
