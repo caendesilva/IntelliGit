@@ -4,6 +4,7 @@ namespace App\Commands;
 
 use App\Commands\Concerns\Command;
 use App\Models\GitLogObject;
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
 class History extends Command
@@ -36,7 +37,12 @@ class History extends Command
     protected function displayHistory(array $rows): void
     {
         foreach ($rows as $row) {
-            $this->line("<fg=green>{$row->hash}</> <fg=blue>{$row->date->format('Y-m-d H:i:s')}</> <fg=default>{$row->message}</>");
+            $this->line("<fg=green>{$row->hash}</> <fg=blue>{$this->formatDate($row->date)}</> <fg=default>{$row->message}</>");
         }
+    }
+
+    protected function formatDate(Carbon $date): string
+    {
+        return $date->format('Y-m-d H:i:s');
     }
 }
