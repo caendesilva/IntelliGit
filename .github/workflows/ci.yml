@@ -88,12 +88,6 @@ jobs:
           name: igit
           path: builds
 
-      - name: Debug artifact
-        run: |
-          ls -la builds
-          ls builds/igit
-          stat builds/igit
-        
 
       - name: Commit build
         uses: EndBug/add-and-commit@v9
