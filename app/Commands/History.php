@@ -26,9 +26,7 @@ class History extends Command
             if ($this->argument('hash')) {
                 $hash = $this->getValidatedHash($this->argument('hash'));
 
-                $commit = $this->git->exec("git show $hash --color=always");
-
-                $this->stream($commit);
+                $this->stream($this->git->exec("git show $hash --color=always"));
 
                 return Command::SUCCESS;
             } else {
