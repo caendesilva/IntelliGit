@@ -24,7 +24,9 @@ class History extends Command
 
         if ($this->argument('show')) {
             if ($this->argument('hash')) {
-                $commit = $this->git->exec("git show {$this->argument('hash')} --color=always");
+                $hash = $this->getValidatedHash($this->argument('hash'));
+
+                $commit = $this->git->exec("git show $hash --color=always");
 
                 $this->stream($commit);
 
@@ -95,5 +97,20 @@ class History extends Command
     protected function formatLineNumber(int|string $number, int $digits): string
     {
         return str_pad((string) ($number + 1), $digits, ' ', STR_PAD_LEFT);
+    }
+
+    protected function getValidatedHash(string $hash): string
+    {
+        if (is_numeric($hash)) {
+            $commits = $this->getCommits();
+
+            if ($hash < 1 || $hash > $commits->count()) {
+                return $this->fatal('Invalid commit number');
+            }
+
+            return $commits->get($hash - 1)->hash;
+        }
+
+        return $hash;
     }
 }
