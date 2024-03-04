@@ -44,7 +44,7 @@ class History extends Command
             $formatted = [
                 $hash,
                 $date,
-                $message
+                $message,
             ];
 
             $this->line(implode(' ', $formatted));
