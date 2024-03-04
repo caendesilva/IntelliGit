@@ -9,6 +9,7 @@ use App\Models\GitLogObject;
  */
 class Git
 {
+    /** The maximum length of a commit message, based on when GitHub truncates them. */
     public const MAX_COMMIT_LENGTH = 72;
 
     protected string $directory;
