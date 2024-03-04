@@ -54,7 +54,7 @@ class History extends Command
     protected function formatMessage(string $message): string
     {
         if (strlen($message) > Git::MAX_COMMIT_LENGTH + 3) {
-            $message = substr($message, 0, Git::MAX_COMMIT_LENGTH).'...';
+            $message = substr($message, 0, Git::MAX_COMMIT_LENGTH - 3).'...';
         }
 
         return str_pad($message, Git::MAX_COMMIT_LENGTH, ' ');
