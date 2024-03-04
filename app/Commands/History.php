@@ -4,7 +4,7 @@ namespace App\Commands;
 
 use App\Commands\Concerns\Command;
 use App\Git;
-use App\Models\GitLogObject;
+use App\Objects\GitLogObject;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 

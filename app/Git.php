@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Models\GitLogObject;
+use App\Objects\GitLogObject;
 
 /**
  * Wrapper for the Git integration with the current directory.
