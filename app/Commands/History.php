@@ -23,7 +23,7 @@ class History extends Command
 
         $commits = $this->getCommits();
 
-        $limit = 24;
+        $limit = 44;
         $this->displayHistory($commits->take($limit)->toArray());
 
         return Command::SUCCESS;
@@ -42,8 +42,7 @@ class History extends Command
             $hash = "<fg=gray>{$row->hash}</>";
             $date = "<fg=gray>{$this->formatDate($row->date)}</>";
 
-            $this->line($message);
-            $this->line(implode(' ', [$date, $hash]));
+            $this->line("$message $date $hash");
         }
     }
 
