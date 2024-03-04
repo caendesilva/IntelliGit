@@ -86,7 +86,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: igit
-          path: builds/igit
+          path: builds
 
       - name: Debug artifact
         run: ls -la builds/igit
