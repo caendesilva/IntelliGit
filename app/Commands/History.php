@@ -40,7 +40,8 @@ class History extends Command
             $hash = "<fg=green>{$row->hash}</>";
             $date = "<fg=blue>{$this->formatDate($row->date)}</>";
             $message = "<fg=default>{$row->message}</>";
-            $this->line("{$hash} {$date} {$message}");
+            $formatted = [$hash, $date, $message];
+            $this->line(implode(' ', $formatted));
         }
     }
 
