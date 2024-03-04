@@ -36,7 +36,7 @@ class History extends Command
 
     protected function getHistoryLength(): int
     {
-        return 44;
+        return $this->terminal->getHeight() - 2;
     }
 
     /** @param  array<GitLogObject>  $rows */
