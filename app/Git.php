@@ -9,6 +9,8 @@ use App\Models\GitLogObject;
  */
 class Git
 {
+    public const MAX_COMMIT_LENGTH = 72;
+
     protected string $directory;
 
     protected int $coreAbbrev;
