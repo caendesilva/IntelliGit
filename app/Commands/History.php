@@ -67,7 +67,7 @@ class History extends Command
 
     protected function formatDate(Carbon $date): string
     {
-        if ($date->isToday()) {
+        if ($date->diffInHours() < 24) {
             return str_pad($date->diffForHumans(), 19, ' ');
         }
 
