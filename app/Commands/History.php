@@ -23,7 +23,7 @@ class History extends Command
 
         $commits = $this->getCommits();
 
-        $limit = 44;
+        $limit = 24;
         $this->displayHistory($commits->take($limit)->toArray());
 
         return Command::SUCCESS;
