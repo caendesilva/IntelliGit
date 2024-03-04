@@ -39,11 +39,16 @@ class History extends Command
     {
         foreach ($rows as $row) {
             $message = "<fg=default>{$row->message}</>";
-            $hash = "<fg=gray>{$row->hash}</>";
+            $hash = "<fg=gray>{$this->formatHash($row->hash)}</>";
             $date = "<fg=gray>{$this->formatDate($row->date)}</>";
 
             $this->line("$message $date $hash");
         }
+    }
+
+    protected function formatHash(string $hash): string
+    {
+        return substr($hash, 0, $this->git->getCoreAbbrev());
     }
 
     protected function formatDate(Carbon $date): string
