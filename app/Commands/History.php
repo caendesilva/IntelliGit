@@ -37,9 +37,9 @@ class History extends Command
     protected function displayHistory(array $rows): void
     {
         foreach ($rows as $row) {
+            $message = "<fg=default>{$row->message}</>";
             $hash = "<fg=green>{$row->hash}</>";
             $date = "<fg=blue>{$this->formatDate($row->date)}</>";
-            $message = "<fg=default>{$row->message}</>";
 
             $this->line($message);
             $this->line(implode(' ', [$date, $hash]));
