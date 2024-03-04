@@ -68,7 +68,7 @@ class History extends Command
     protected function formatDate(Carbon $date): string
     {
         if ($date->diffInHours() < 24) {
-            return str_pad($date->diffForHumans(), 19, ' ');
+            return str_pad($date->diffForHumans(), 19, ' ', STR_PAD_LEFT);
         }
 
         return $date->format('Y-m-d H:i:s');
