@@ -57,7 +57,7 @@ class History extends Command
             $message = substr($message, 0, Git::MAX_COMMIT_LENGTH).'...';
         }
 
-        return $message;
+        return str_pad($message, Git::MAX_COMMIT_LENGTH, ' ');
     }
 
     protected function formatHash(string $hash): string
