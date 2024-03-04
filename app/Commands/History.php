@@ -33,7 +33,7 @@ class History extends Command
         return collect($this->git->log());
     }
 
-    /** @param array<GitLogObject> $rows */
+    /** @param  array<GitLogObject>  $rows */
     protected function displayHistory(array $rows): void
     {
         foreach ($rows as $row) {
