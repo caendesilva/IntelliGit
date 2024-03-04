@@ -11,7 +11,7 @@ use Illuminate\Support\Collection;
 class History extends Command
 {
     /** @var string */
-    protected $signature = 'history';
+    protected $signature = 'history {show? : Show information about a commit number or hash} {hash? : The commit number or hash to show}';
 
     /** @var string */
     protected $description = 'Show Git history';
