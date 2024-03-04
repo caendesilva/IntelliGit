@@ -32,4 +32,9 @@ abstract class Command extends \LaravelZero\Framework\Commands\Command
 
         $this->output->write($highlighted);
     }
+
+    public function stream(string $message): void
+    {
+        $this->output->write($message);
+    }
 }
