@@ -48,7 +48,12 @@ class History extends Command
             $hash = "<fg=gray>{$this->formatHash($row->hash)}</>";
             $date = "<fg=gray>{$this->formatDate($row->date)}</>";
 
-            $this->line(sprintf("%s %s %s %s", $number, $message, $date, $hash));
+            $this->line(sprintf("%s %s %s %s",
+                $number,
+                $message,
+                $date,
+                $hash,
+            ));
         }
     }
 
