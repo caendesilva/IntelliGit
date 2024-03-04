@@ -3,6 +3,7 @@
 namespace App\Commands;
 
 use App\Commands\Concerns\Command;
+use App\Git;
 use App\Models\GitLogObject;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
@@ -48,6 +49,10 @@ class History extends Command
 
     protected function formatMessage(string $message): string
     {
+        if (strlen($message) > Git::MAX_COMMIT_LENGTH + 3) {
+            $message = substr($message, 0, Git::MAX_COMMIT_LENGTH).'...';
+        }
+
         return $message;
     }
 
