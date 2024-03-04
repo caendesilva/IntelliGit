@@ -22,6 +22,18 @@ class History extends Command
             return $this->fatal('Not in a Git repository');
         }
 
+        if ($this->argument('show')) {
+            if ($this->argument('hash')) {
+                $commit = $this->git->exec("git show {$this->argument('hash')} --color=always");
+
+                $this->stream($commit);
+
+                return Command::SUCCESS;
+            } else {
+                return $this->fatal('You must provide a commit number or hash to show');
+            }
+        }
+
         $commits = $this->getCommits();
 
         $this->displayHistory($commits->take($this->getHistoryLength())->toArray());
