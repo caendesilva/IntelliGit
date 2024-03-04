@@ -115,4 +115,5 @@ jobs:
             
             It is not intended for production use and may contain bugs or incomplete features.
           prerelease: true
+          skipIfReleaseExists: true
 
