@@ -99,7 +99,6 @@ jobs:
 
       - name: Create a release
         uses: ncipollo/release-action@v1
-        if: false # Disabled for now
         with:
           artifacts: builds/igit
           # commit: ${{ github.sha }}
