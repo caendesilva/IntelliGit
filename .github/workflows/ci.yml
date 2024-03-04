@@ -107,7 +107,8 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           artifacts: builds/igit
-          commit: ${{ github.sha }}
+          # commit: ${{ github.sha }}
+          commit: releases
           tag: dev-${{ github.sha }}
           name: Development Release ${{ github.sha }}
           body: |
