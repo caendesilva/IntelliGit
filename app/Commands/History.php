@@ -24,8 +24,7 @@ class History extends Command
 
         $commits = $this->getCommits();
 
-        $limit = 44;
-        $this->displayHistory($commits->take($limit)->toArray());
+        $this->displayHistory($commits->take($this->getHistoryLength())->toArray());
 
         return Command::SUCCESS;
     }
@@ -33,6 +32,11 @@ class History extends Command
     protected function getCommits(): Collection
     {
         return collect($this->git->log());
+    }
+
+    protected function getHistoryLength(): int
+    {
+        return 44;
     }
 
     /** @param  array<GitLogObject>  $rows */
