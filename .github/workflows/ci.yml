@@ -96,6 +96,8 @@ jobs:
         with:
           message: "Build executable for commit `${{ github.sha }}`"
           add: "builds/igit --force"
+          committer_name: "GitHub Actions"
+          committer_email: "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Create a release
         uses: ncipollo/release-action@v1
