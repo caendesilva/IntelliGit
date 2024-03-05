@@ -53,7 +53,7 @@ class Commit extends Command
                     $selection[$menu->getSelectedItem()->getText()] = true;
                 }
 
-                if ($menu->getSelectedItem()->getText() === 'Select all files') {
+                if ($menu->getSelectedItem()->getText() === 'Select all files [A]') {
                     $menu->close();
                 }
             };
@@ -68,11 +68,12 @@ class Commit extends Command
             $menu = (new CliMenuBuilder)
                 ->setTitle('Select files to commit')
                 ->setTitleSeparator('')
-                ->addRadioItem('Select all files', $itemCallable)
+                ->enableAutoShortcuts()
+                ->addRadioItem('Select all files [A]', $itemCallable)
                 ->addLineBreak('')
                 ->addCheckboxItems($items)
                 ->addLineBreak('')
-                ->setExitButtonText('Next')
+                ->setExitButtonText('Next [N]')
                 ->build();
 
             $menu->open();
