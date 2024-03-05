@@ -12,6 +12,9 @@ class Commit extends Command
     /** @var string */
     protected $description = 'Create a new commit';
 
+    protected array $filesToCommit;
+    protected string $commitMessage;
+
     public function handle(): int
     {
         // TODO: Implement handle() method.
