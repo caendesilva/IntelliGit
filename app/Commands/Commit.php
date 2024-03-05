@@ -72,6 +72,10 @@ class Commit extends Command
             $menu->open();
 
             $selection = array_keys($selection);
+
+            if (in_array('Select all files', $selection)) {
+                $selection = $files;
+            }
         }
 
         return $selection;
