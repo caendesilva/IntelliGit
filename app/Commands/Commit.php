@@ -62,12 +62,13 @@ class Commit extends Command
                     'text' => $file,
                     'itemCallable' => $itemCallable,
                 ],
-               array_merge(['all' => 'Select all files'], $files)
+                $files
             );
 
             $menu = (new CliMenuBuilder)
                 ->setTitle('Select files to commit')
                 ->setTitleSeparator('')
+                ->addRadioItem('Select all files', $itemCallable)
                 ->addCheckboxItems($items)
                 ->addLineBreak('')
                 ->setExitButtonText('Next')
