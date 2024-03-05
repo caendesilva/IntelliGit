@@ -67,8 +67,9 @@ class Commit extends Command
 
             $menu = (new CliMenuBuilder)
                 ->setTitle('Select files to commit')
+                ->setTitleSeparator('')
                 ->addCheckboxItems($items)
-                ->addLineBreak('-')
+                ->addLineBreak('')
                 ->setExitButtonText('Next')
                 ->build();
 
