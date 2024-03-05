@@ -20,10 +20,13 @@ class Commit extends Command
         // TODO: Implement handle() method.
 
         // Stage files
+        // $this->filesToCommit = $this->stageFiles();
 
         // Create message
+        // $this->commitMessage = $this->createMessage();
 
         // Commit
+        // $this->git->commit($this->filesToCommit, $this->commitMessage);
 
         return Command::SUCCESS;
     }
