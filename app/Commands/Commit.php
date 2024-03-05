@@ -36,8 +36,29 @@ class Commit extends Command
         // Get changed files
         $files = $this->git->getChangedFiles();
 
-        // Select files to commit
-        $selection = $this->choice('Select files to commit', $files, null, null, true);
+        $files = [
+            // test
+            'app/Commands/Commit.php',
+            'app/Helpers/ResultWindowHelper.php',
+            'app/Commands/Concerns/Command.php',
+        ];
+
+
+        // Windows fallback
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' || ! $this->input->isInteractive()) {
+            $selection = $this->choice('Select files to commit', $files, null, null, true);
+        } else {
+            // Interactive selection
+            $this->info('Select files to commit');
+
+            $bullet = '•';
+
+            foreach ($files as $index => $file) {
+                $this->line(" <fg=gray>{$bullet}</> <fg=default>{$file}</>");
+            }
+        }
+
+        dd($selection);
     }
 
     protected function createMessage(): string
