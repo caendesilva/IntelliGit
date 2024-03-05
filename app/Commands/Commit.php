@@ -45,7 +45,11 @@ class Commit extends Command
             $selection = null;
 
             $itemCallable = function (CliMenu $menu) use (&$selection) {
-                $selection[] = $menu->getSelectedItem()->getText();
+                if (isset($selection[$menu->getSelectedItem()->getText()])) {
+                    unset($selection[$menu->getSelectedItem()->getText()]);
+                } else {
+                    $selection[$menu->getSelectedItem()->getText()] = true;
+                }
 
                 if ($menu->getSelectedItem()->getText() === 'Select all files') {
                     $menu->close();
