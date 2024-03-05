@@ -69,6 +69,7 @@ class Commit extends Command
                 ->setTitle('Select files to commit')
                 ->setTitleSeparator('')
                 ->addRadioItem('Select all files', $itemCallable)
+                ->addLineBreak('')
                 ->addCheckboxItems($items)
                 ->addLineBreak('')
                 ->setExitButtonText('Next')
