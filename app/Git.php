@@ -51,4 +51,9 @@ class Git
     {
         return $this->coreAbbrev ??= strlen(trim($this->exec('git rev-parse --short HEAD')) ?? '') ?: 7;
     }
+
+    public function commit(array $files, string $message): void
+    {
+        //
+    }
 }
