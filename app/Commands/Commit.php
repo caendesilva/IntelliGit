@@ -3,6 +3,8 @@
 namespace App\Commands;
 
 use App\Commands\Concerns\Command;
+use PhpSchool\CliMenu\Builder\CliMenuBuilder;
+use PhpSchool\CliMenu\CliMenu;
 
 class Commit extends Command
 {
@@ -40,9 +42,27 @@ class Commit extends Command
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' || ! $this->input->isInteractive()) {
             $selection = $this->choice('Select files to commit', $files, null, null, true);
         } else {
-            $selection = $this->menu('Select files to commit', $files)
-                ->addOption('all', 'Select all files')
-                ->open();
+            $selection = null;
+
+            $itemCallable = function (CliMenu $menu) use (&$selection) {
+                $selection = $menu->getSelectedItem()->getText();
+                $menu->close();
+            };
+            $items = array_map(
+                fn (string $file): array => [
+                    'text' => $file,
+                    'itemCallable' => $itemCallable,
+                ],
+               array_merge(['all' => 'Select all files'], $files)
+            );
+
+            $menu = (new CliMenuBuilder)
+                ->setTitle('Select files to commit')
+                ->addItems($items)
+                ->addLineBreak('-')
+                ->build();
+
+            $menu->open();
         }
 
         return $selection;
