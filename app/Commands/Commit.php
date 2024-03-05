@@ -69,6 +69,7 @@ class Commit extends Command
                 ->setTitle('Select files to commit')
                 ->addCheckboxItems($items)
                 ->addLineBreak('-')
+                ->setExitButtonText('Next')
                 ->build();
 
             $menu->open();
