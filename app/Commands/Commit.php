@@ -40,7 +40,9 @@ class Commit extends Command
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' || ! $this->input->isInteractive()) {
             $selection = $this->choice('Select files to commit', $files, null, null, true);
         } else {
-            $selection = $this->menu('Select files to commit', $files)->open();
+            $selection = $this->menu('Select files to commit', $files)
+                ->addOption('all', 'Select all files')
+                ->open();
         }
 
         return $selection;
