@@ -70,6 +70,8 @@ class Commit extends Command
                 ->build();
 
             $menu->open();
+
+            $selection = array_keys($selection);
         }
 
         return $selection;
