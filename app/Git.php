@@ -60,6 +60,9 @@ class Git
 
     public function commit(array $files, string $message): void
     {
+        // Unstage all files
+        $this->git->exec('git reset');
+
         //
     }
 }
