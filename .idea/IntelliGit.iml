@@ -115,6 +115,10 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/vlucas/phpdotenv" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/voku/portable-ascii" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/webmozart/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/beberlei/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/nunomaduro/laravel-console-menu" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/php-school/cli-menu" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/php-school/terminal" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

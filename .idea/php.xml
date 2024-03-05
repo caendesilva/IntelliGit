@@ -120,6 +120,10 @@
       <path value="$PROJECT_DIR$/vendor/illuminate/console" />
       <path value="$PROJECT_DIR$/vendor/php-parallel-lint/php-console-color" />
       <path value="$PROJECT_DIR$/vendor/php-parallel-lint/php-console-highlighter" />
+      <path value="$PROJECT_DIR$/vendor/beberlei/assert" />
+      <path value="$PROJECT_DIR$/vendor/nunomaduro/laravel-console-menu" />
+      <path value="$PROJECT_DIR$/vendor/php-school/cli-menu" />
+      <path value="$PROJECT_DIR$/vendor/php-school/terminal" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />
