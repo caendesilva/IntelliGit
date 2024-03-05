@@ -7,7 +7,7 @@ use App\Commands\Concerns\Command;
 class Commit extends Command
 {
     /** @var string */
-    protected $signature = 'commit';
+    protected $signature = 'commit'; // Todo: Support --message for specific message, support --staged to use existing stage, --all to stage all files
 
     /** @var string */
     protected $description = 'Create a new commit';
