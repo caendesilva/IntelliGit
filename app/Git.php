@@ -52,6 +52,7 @@ class Git
         return $this->coreAbbrev ??= strlen(trim($this->exec('git rev-parse --short HEAD')) ?? '') ?: 7;
     }
 
+    /** @return array<string> */
     public function getChangedFiles(): array
     {
         return explode("\n", trim($this->exec('git diff --name-only')));
