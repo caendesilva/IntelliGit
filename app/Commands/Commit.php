@@ -42,6 +42,8 @@ class Commit extends Command
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' || ! $this->input->isInteractive()) {
             $selection = $this->choice('Select files to commit', $files, null, null, true);
         } else {
+            // See https://github.com/php-school/cli-menu
+
             $selection = [];
 
             $itemCallable = function (CliMenu $menu) use (&$selection) {
