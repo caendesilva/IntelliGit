@@ -16,6 +16,12 @@ class Commit extends Command
     {
         // TODO: Implement handle() method.
 
+        // Stage files
+
+        // Create message
+
+        // Commit
+
         return Command::SUCCESS;
     }
 }
