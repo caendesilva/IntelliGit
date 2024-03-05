@@ -45,7 +45,7 @@ class Commit extends Command
             $selection = null;
 
             $itemCallable = function (CliMenu $menu) use (&$selection) {
-                $selection = $menu->getSelectedItem()->getText();
+                $selection[] = $menu->getSelectedItem()->getText();
                 $menu->close();
             };
             $items = array_map(
@@ -58,7 +58,7 @@ class Commit extends Command
 
             $menu = (new CliMenuBuilder)
                 ->setTitle('Select files to commit')
-                ->addItems($items)
+                ->addCheckboxItems($items)
                 ->addLineBreak('-')
                 ->build();
 
