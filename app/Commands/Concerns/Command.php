@@ -5,6 +5,9 @@ namespace App\Commands\Concerns;
 use App\Git;
 use Symfony\Component\Console\Terminal;
 
+/**
+ * @method \NunoMaduro\LaravelConsoleMenu\Menu menu(string $title, array $choices)
+ */
 abstract class Command extends \LaravelZero\Framework\Commands\Command
 {
     protected Git $git;
