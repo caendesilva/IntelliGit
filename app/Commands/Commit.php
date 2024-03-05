@@ -46,7 +46,6 @@ class Commit extends Command
 
             $itemCallable = function (CliMenu $menu) use (&$selection) {
                 $selection[] = $menu->getSelectedItem()->getText();
-                $menu->close();
             };
             $items = array_map(
                 fn (string $file): array => [
