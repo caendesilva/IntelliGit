@@ -36,6 +36,9 @@ class Commit extends Command
         // Unstage all files
         $this->git->exec('git reset');
 
+        // Get changed files
+        $files = $this->git->getChangedFiles();
+
         return [];
     }
 
