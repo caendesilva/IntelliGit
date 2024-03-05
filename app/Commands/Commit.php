@@ -36,7 +36,8 @@ class Commit extends Command
         // Get changed files
         $files = $this->git->getChangedFiles();
 
-        return [];
+        // Select files to commit
+        $selection = $this->choice('Select files to commit', $files, null, null, true);
     }
 
     protected function createMessage(): string
