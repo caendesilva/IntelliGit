@@ -33,6 +33,9 @@ class Commit extends Command
 
     protected function stageFiles(): array
     {
+        // Unstage all files
+        $this->git->exec('git reset');
+
         return [];
     }
 
