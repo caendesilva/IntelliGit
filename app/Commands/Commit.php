@@ -30,4 +30,14 @@ class Commit extends Command
 
         return Command::SUCCESS;
     }
+
+    protected function stageFiles(): array
+    {
+        return [];
+    }
+
+    protected function createMessage(): string
+    {
+        return '';
+    }
 }
