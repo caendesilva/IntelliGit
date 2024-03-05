@@ -46,6 +46,10 @@ class Commit extends Command
 
             $itemCallable = function (CliMenu $menu) use (&$selection) {
                 $selection[] = $menu->getSelectedItem()->getText();
+
+                if ($menu->getSelectedItem()->getText() === 'Select all files') {
+                    $menu->close();
+                }
             };
             $items = array_map(
                 fn (string $file): array => [
