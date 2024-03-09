@@ -17,8 +17,10 @@ class Commit extends Command
 
     /** @var array<string> */
     protected array $changedFiles;
+
     /** @var array<string> */
     protected array $filesToCommit;
+
     protected string $commitMessage;
 
     public function handle(): int
