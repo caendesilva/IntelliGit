@@ -24,7 +24,10 @@ readonly class SimpleFileDiff
 
     public static function parse(string $file): SimpleFileDiff
     {
-        $diff = app('git')->exec("git diff $file");
+        /** @var \App\Git $git */
+        $git = app('git');
+
+        $diff = $git->exec("git diff $file");
 
         $lines = explode("\n", $diff);
         $oldLines = [];
