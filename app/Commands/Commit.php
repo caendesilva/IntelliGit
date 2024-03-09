@@ -83,6 +83,7 @@ class Commit extends Command
                 ->addCheckboxItems($items)
                 ->addLineBreak('')
                 ->addRadioItem('Stage selected [S]', $itemCallable)
+                ->addRadioItem('Cancel and quit [Q]', $itemCallable)
                 ->build();
 
             $menu->open();
