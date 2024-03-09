@@ -24,6 +24,11 @@ class Commit extends Command
         // Get changed files
         $this->changedFiles = $this->git->getChangedFiles();
 
+        if (empty($this->changedFiles)) {
+            $this->info('No changes! Working tree clean.');
+            return Command::SUCCESS;
+        }
+
         try {
             // Stage files
             $this->filesToCommit = $this->stageFiles();
