@@ -112,7 +112,7 @@ class Commit extends Command
 
             $selection = array_keys($selection);
 
-            if (in_array('Select all files', $selection)) {
+            if (in_array('Select all files [A]', $selection)) {
                 $selection = $files;
             }
         }
