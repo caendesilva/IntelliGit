@@ -29,7 +29,7 @@ class Commit extends Command
         $this->changedFiles = $this->git->getChangedFiles();
 
         if (empty($this->changedFiles)) {
-            $this->info('No changes! Working tree clean.');
+            $this->info('Nothing to commit! Working tree clean.');
             return Command::SUCCESS;
         }
 
