@@ -3,6 +3,7 @@
 namespace App\Commands;
 
 use App\Commands\Concerns\Command;
+use App\Exceptions\UserCancelException;
 use PhpSchool\CliMenu\Builder\CliMenuBuilder;
 use PhpSchool\CliMenu\CliMenu;
 
@@ -66,6 +67,7 @@ class Commit extends Command
                 }
                 if ($menu->getSelectedItem()->getText() === 'Cancel and quit [Q]') {
                     $menu->close();
+                    throw new UserCancelException();
                 }
             };
             $items = array_map(
