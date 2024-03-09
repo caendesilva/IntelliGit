@@ -142,6 +142,12 @@ class Commit extends Command
 
     protected function stageFilesForCommit(): void
     {
+        if ($this->option('file')) {
+            $this->filesToCommit = explode(',', $this->option('file'));
+            $this->info('Staged files: ' . implode(', ', $this->filesToCommit));
+            return;
+        }
+
         if (count($this->changedFiles) === 1) {
             $this->info('Automatically staged only changed file: ' . $this->changedFiles[0]);
             $this->filesToCommit = $this->changedFiles;
