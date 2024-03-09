@@ -15,7 +15,9 @@ class Commit extends Command
     /** @var string */
     protected $description = 'Create a new commit';
 
+    /** @var array<string> */
     protected array $changedFiles;
+    /** @var array<string> */
     protected array $filesToCommit;
     protected string $commitMessage;
 
