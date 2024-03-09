@@ -143,7 +143,11 @@ class Commit extends Command
     protected function stageFilesForCommit(): void
     {
         if ($this->option('file')) {
-            $this->filesToCommit = explode(',', $this->option('file'));
+            $this->filesToCommit = array_filter(array_map(function (string $file): string {
+                $file = trim($file);
+                assert(file_exists($file), 'File does not exist: ' . $file);
+                return $file;
+            }, explode(',', $this->option('file'))));
             $this->info('Staged files: ' . implode(', ', $this->filesToCommit));
             return;
         }
