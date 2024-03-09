@@ -62,6 +62,8 @@ class Commit extends Command
 
             $selection = [];
 
+            // TODO: CMD+Enter to confirm selection
+
             $itemCallable = function (CliMenu $menu) use (&$selection) {
                 if (isset($selection[$menu->getSelectedItem()->getText()])) {
                     unset($selection[$menu->getSelectedItem()->getText()]);
