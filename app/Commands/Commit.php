@@ -20,8 +20,6 @@ class Commit extends Command
 
     public function handle(): int
     {
-        // TODO: Implement handle() method.
-
         try {
             // Stage files
             $this->filesToCommit = $this->stageFiles();
