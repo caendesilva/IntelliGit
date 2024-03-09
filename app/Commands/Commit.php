@@ -49,6 +49,7 @@ class Commit extends Command
         return Command::SUCCESS;
     }
 
+    /** @return array<string> */
     protected function stageFiles(): array
     {
         $files = $this->changedFiles;
