@@ -51,7 +51,7 @@ class Commit extends Command
     }
 
     /** @return array<string> */
-    protected function stageFiles(): array
+    protected function promptForWhichFilesToStage(): array
     {
         $files = $this->changedFiles;
 
@@ -146,7 +146,7 @@ class Commit extends Command
             $this->info('Automatically staged only changed file: ' . $this->changedFiles[0]);
             $this->filesToCommit = $this->changedFiles;
         } else {
-            $this->filesToCommit = $this->stageFiles();
+            $this->filesToCommit = $this->promptForWhichFilesToStage();
             $this->info('Staged files: ' . implode(', ', $this->filesToCommit));
         }
     }
