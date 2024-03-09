@@ -16,4 +16,12 @@ class CommitMessageGenerator
     {
         //
     }
+
+    /** @return array<string> */
+    public function getSuggestions(): array
+    {
+        return [
+            //
+        ];
+    }
 }

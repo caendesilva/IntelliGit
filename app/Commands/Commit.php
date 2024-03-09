@@ -132,6 +132,6 @@ class Commit extends Command
         $generator = new CommitMessageGenerator($this->filesToCommit);
         $generator->generate();
 
-        return '';
+        return $this->choice('Select commit message', $generator->getSuggestions());
     }
 }
