@@ -37,6 +37,8 @@ readonly class SimpleFileDiff
         $oldLines = [];
         $newLines = [];
         foreach ($lines as $index => $line) {
+            // Todo: Offset indexes at write operation to account for collapsed lines
+
             if (str_starts_with($line, '-') && !str_starts_with($line, '---')) {
                 $oldLines[$index] = substr($line, 1);
             } elseif (str_starts_with($line, '+') && !str_starts_with($line, '+++')) {
