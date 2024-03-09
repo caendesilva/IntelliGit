@@ -28,6 +28,10 @@ readonly class SimpleFileDiff
         $git = app('git');
 
         $diff = $git->exec("git diff $file");
+        if (blank(trim($diff))) {
+            // Check if file is new
+            $diff = $git->exec("git diff /dev/null $file");
+        }
 
         $lines = explode("\n", $diff);
         $oldLines = [];
