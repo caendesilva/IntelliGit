@@ -24,11 +24,11 @@ readonly class SimpleFileDiff
         $lines = explode("\n", $diff);
         $oldLines = [];
         $newLines = [];
-        foreach ($lines as $line) {
+        foreach ($lines as $index => $line) {
             if (str_starts_with($line, '-') && !str_starts_with($line, '---')) {
-                $oldLines[] = substr($line, 1);
+                $oldLines[$index] = substr($line, 1);
             } elseif (str_starts_with($line, '+') && !str_starts_with($line, '+++')) {
-                $newLines[] = substr($line, 1);
+                $newLines[$index] = substr($line, 1);
             }
         }
 
