@@ -2,12 +2,12 @@
 
 namespace App\Objects;
 
-class SimpleFileDiff
+readonly class SimpleFileDiff
 {
-    public readonly string $file;
-    public readonly string $contents;
-    public readonly array $oldLines;
-    public readonly array $newLines;
+    public string $file;
+    public string $contents;
+    public array $oldLines;
+    public array $newLines;
 
     protected function __construct(string $file, string $contents, array $oldLines, array $newLines)
     {
