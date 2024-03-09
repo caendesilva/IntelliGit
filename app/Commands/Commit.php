@@ -104,7 +104,7 @@ class Commit extends Command
                 ->addLineBreak('')
                 ->addCheckboxItems($items)
                 ->addLineBreak('')
-                ->addRadioItem('Stage selected [S]', $itemCallable)
+                ->addRadioItem('Stage selected [S]', $itemCallable) // Todo: Add reactive state to disable this item if no files are selected
                 ->addRadioItem('Cancel and quit [Q]', $itemCallable)
                 ->build();
 
