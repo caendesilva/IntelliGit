@@ -25,6 +25,10 @@ class CommitMessageGenerator
     public function generate(): void
     {
         $this->messages = [];
+
+        if ($this->filesToCommit->count() === 1) {
+            $this->generateSingleFileMessages($this->filesToCommit->first());
+        }
     }
 
     /** @return array<string> */
@@ -34,5 +38,10 @@ class CommitMessageGenerator
             ->sortByDesc(fn (int $priority, string $message): int => $priority)
             ->keys()
             ->toArray();
+    }
+
+    protected function generateSingleFileMessages(string $file): void
+    {
+        //
     }
 }
