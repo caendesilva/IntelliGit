@@ -24,7 +24,7 @@ class CommitMessageGenerator
 
     public function generate(): void
     {
-        //
+        $this->messages = [];
     }
 
     /** @return array<string> */
