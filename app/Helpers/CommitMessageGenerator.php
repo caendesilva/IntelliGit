@@ -47,6 +47,8 @@ class CommitMessageGenerator
 
         if ($diff->wasRecentlyCreated()) {
             $this->messages["Create $file"] = 10;
+        } else {
+            $this->messages["Update $file"] = 50;
         }
     }
 }
