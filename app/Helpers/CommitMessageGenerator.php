@@ -2,14 +2,16 @@
 
 namespace App\Helpers;
 
+use Illuminate\Support\Collection;
+
 /**
  * Finds a few suggestions for commit messages based on the files to commit.
  * Sorted in the order of suspected relevance.
  */
 class CommitMessageGenerator
 {
-    /** @var array<string> */
-    protected array $filesToCommit;
+    /** @var Collection<string> */
+    protected Collection $filesToCommit;
 
     /** @var array<string> */
     protected array $messages;
@@ -17,7 +19,7 @@ class CommitMessageGenerator
     /** Create a new generator instance which the supplied context */
     public function __construct(array $filesToCommit)
     {
-        $this->filesToCommit = $filesToCommit;
+        $this->filesToCommit = collect($filesToCommit);
     }
 
     public function generate(): void
