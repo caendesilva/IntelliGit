@@ -13,7 +13,7 @@ class CommitMessageGenerator
     /** @var Collection<string> */
     protected Collection $filesToCommit;
 
-    /** @var array<string> */
+    /** @var array<string, int> String is the message, int is the relevance priority */
     protected array $messages;
 
     /** Create a new generator instance which the supplied context */
@@ -30,6 +30,9 @@ class CommitMessageGenerator
     /** @return array<string> */
     public function getSuggestions(): array
     {
-        return $this->messages;
+        return collect($this->messages)
+            ->sortByDesc(fn (int $priority, string $message): int => $priority)
+            ->keys()
+            ->toArray();
     }
 }
