@@ -10,11 +10,11 @@ namespace App\Objects;
 readonly class SimpleFileDiff
 {
     public string $file;
-    public string $contents;
+    public array $contents;
     public array $oldLines;
     public array $newLines;
 
-    protected function __construct(string $file, string $contents, array $oldLines, array $newLines)
+    protected function __construct(string $file, array $contents, array $oldLines, array $newLines)
     {
         $this->file = $file;
         $this->contents = $contents;
@@ -44,7 +44,7 @@ readonly class SimpleFileDiff
             }
         }
 
-        $contents = file_get_contents($file);
+        $contents = explode("\n", file_get_contents($file));
 
         return new SimpleFileDiff(
             $file,
