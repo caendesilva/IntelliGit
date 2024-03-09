@@ -57,7 +57,12 @@ class Commit extends Command
                     $menu->close();
                 }
                 if ($menu->getSelectedItem()->getText() === 'Stage selected [S]') {
-                    $menu->close();
+                    if (empty($selection) || $selection === ['Stage selected [S]' => true]) {
+                        $flash = $menu->flash('No files selected');
+                        $flash->display();
+                    } else {
+                        $menu->close();
+                    }
                 }
             };
             $items = array_map(
