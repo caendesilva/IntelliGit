@@ -2,6 +2,11 @@
 
 namespace App\Objects;
 
+/**
+ * Object wrapper for parsed data from a git diff.
+ *
+ * @see https://git-scm.com/docs/diff-format
+ */
 readonly class SimpleFileDiff
 {
     public string $file;
