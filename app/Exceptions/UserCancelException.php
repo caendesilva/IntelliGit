@@ -2,7 +2,9 @@
 
 namespace App\Exceptions;
 
-class UserCancelException extends \RuntimeException
+use RuntimeException;
+
+class UserCancelException extends RuntimeException
 {
     //
 }
