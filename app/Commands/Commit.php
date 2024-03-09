@@ -12,7 +12,7 @@ class Commit extends Command
 {
     // Todo: Support --message for specific message, support --staged to use existing stage, --all to stage all files
     /** @var string */
-    protected $signature = 'commit';
+    protected $signature = 'commit {--file= : The file (or comma separated files) to commit}';
 
     /** @var string */
     protected $description = 'Create a new commit';
