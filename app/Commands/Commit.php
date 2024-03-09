@@ -22,8 +22,12 @@ class Commit extends Command
     {
         // TODO: Implement handle() method.
 
-        // Stage files
-        $this->filesToCommit = $this->stageFiles();
+        try {
+            // Stage files
+            $this->filesToCommit = $this->stageFiles();
+        } catch (UserCancelException $exception) {
+            return $exception->getCode();
+        }
 
         // Create message
         $this->commitMessage = $this->createMessage();
