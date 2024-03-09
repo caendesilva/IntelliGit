@@ -7,12 +7,12 @@ namespace App\Objects;
  *
  * @see https://git-scm.com/docs/diff-format
  */
-readonly class SimpleFileDiff
+class SimpleFileDiff
 {
-    public string $file;
-    public array $contents;
-    public array $oldLines;
-    public array $newLines;
+    readonly public string $file;
+    readonly public array $contents;
+    readonly public array $oldLines;
+    readonly public array $newLines;
 
     protected function __construct(string $file, array $contents, array $oldLines, array $newLines)
     {
