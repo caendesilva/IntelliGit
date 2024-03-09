@@ -35,17 +35,10 @@ class Commit extends Command
             return Command::SUCCESS;
         }
 
-        if (count($this->changedFiles) === 1) {
-            $this->info('Automatically staged only changed file: '.$this->changedFiles[0]);
-            $this->filesToCommit = $this->changedFiles;
-        } else {
-            try {
-                // Stage files
-                $this->filesToCommit = $this->stageFiles();
-            } catch (UserCancelException $exception) {
-                return $exception->getCode();
-            }
-            $this->info('Staged files: '.implode(', ', $this->filesToCommit));
+        try {
+            $this->stageFilesForCommit();
+        } catch (UserCancelException $exception) {
+            return $exception->getCode();
         }
 
         // Create message
@@ -145,5 +138,16 @@ class Commit extends Command
         }
 
         return $choice;
+    }
+
+    protected function stageFilesForCommit(): void
+    {
+        if (count($this->changedFiles) === 1) {
+            $this->info('Automatically staged only changed file: ' . $this->changedFiles[0]);
+            $this->filesToCommit = $this->changedFiles;
+        } else {
+            $this->filesToCommit = $this->stageFiles();
+            $this->info('Staged files: ' . implode(', ', $this->filesToCommit));
+        }
     }
 }
