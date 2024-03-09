@@ -64,6 +64,9 @@ class Commit extends Command
                         $menu->close();
                     }
                 }
+                if ($menu->getSelectedItem()->getText() === 'Cancel and quit [Q]') {
+                    $menu->close();
+                }
             };
             $items = array_map(
                 fn (string $file): array => [
