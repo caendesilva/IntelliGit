@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Objects\SimpleFileDiff;
 use Illuminate\Support\Collection;
 
 /**
@@ -42,6 +43,6 @@ class CommitMessageGenerator
 
     protected function generateSingleFileMessages(string $file): void
     {
-        //
+        $diff = SimpleFileDiff::parse($file);
     }
 }
