@@ -44,5 +44,9 @@ class CommitMessageGenerator
     protected function generateSingleFileMessages(string $file): void
     {
         $diff = SimpleFileDiff::parse($file);
+
+        if ($diff->wasRecentlyCreated()) {
+            $this->messages["Create $file"] = 10;
+        }
     }
 }
