@@ -46,7 +46,6 @@ class Commit extends Command
             $this->info('Staged files: '.implode(', ', $this->filesToCommit));
         }
 
-
         // Create message
         $this->commitMessage = $this->createMessage();
 
