@@ -21,6 +21,9 @@ class Commit extends Command
 
     public function handle(): int
     {
+        // Get changed files
+        $this->changedFiles = $this->git->getChangedFiles();
+
         try {
             // Stage files
             $this->filesToCommit = $this->stageFiles();
@@ -39,8 +42,7 @@ class Commit extends Command
 
     protected function stageFiles(): array
     {
-        // Get changed files
-        $files = $this->git->getChangedFiles();
+        $files = $this->changedFiles;
 
         // Windows fallback
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' || ! $this->input->isInteractive()) {
