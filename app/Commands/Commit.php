@@ -132,8 +132,14 @@ class Commit extends Command
         $generator = new CommitMessageGenerator($this->filesToCommit);
         $generator->generate();
 
-        return $this->choice('Select commit message', array_merge([
+        $choice = $this->choice('Select commit message', array_merge([
             'Custom message',
         ], $generator->getSuggestions()), 'Custom message');
+
+        if ($choice === 'Custom message') {
+            return $this->ask('Enter commit message');
+        }
+
+        return $choice;
     }
 }
