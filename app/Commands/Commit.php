@@ -4,6 +4,7 @@ namespace App\Commands;
 
 use App\Commands\Concerns\Command;
 use App\Exceptions\UserCancelException;
+use App\Helpers\CommitMessageGenerator;
 use PhpSchool\CliMenu\Builder\CliMenuBuilder;
 use PhpSchool\CliMenu\CliMenu;
 
@@ -128,6 +129,8 @@ class Commit extends Command
 
     protected function createMessage(): string
     {
+        $generator = new CommitMessageGenerator();
+
         return '';
     }
 }
