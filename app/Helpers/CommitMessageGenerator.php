@@ -11,4 +11,9 @@ class CommitMessageGenerator
     {
         $this->filesToCommit = $filesToCommit;
     }
+
+    public function generate(): void
+    {
+        //
+    }
 }

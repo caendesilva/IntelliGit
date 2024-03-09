@@ -130,6 +130,7 @@ class Commit extends Command
     protected function createMessage(): string
     {
         $generator = new CommitMessageGenerator($this->filesToCommit);
+        $generator->generate();
 
         return '';
     }
