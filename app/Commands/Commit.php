@@ -129,6 +129,8 @@ class Commit extends Command
 
     protected function createMessage(): string
     {
+        // Todo check arguments for message
+
         $generator = new CommitMessageGenerator($this->filesToCommit);
         $generator->generate();
 
@@ -137,6 +139,7 @@ class Commit extends Command
         ], $generator->getSuggestions()), 'Custom message');
 
         if ($choice === 'Custom message') {
+            // Todo hard character limit
             return $this->ask('Enter commit message');
         }
 
