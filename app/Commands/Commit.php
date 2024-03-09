@@ -33,14 +33,19 @@ class Commit extends Command
             return Command::SUCCESS;
         }
 
-        try {
-            // Stage files
-            $this->filesToCommit = $this->stageFiles();
-        } catch (UserCancelException $exception) {
-            return $exception->getCode();
+        if (count($this->changedFiles) === 1) {
+            $this->info('Automatically staged only changed file: '.$this->changedFiles[0]);
+            $this->filesToCommit = $this->changedFiles;
+        } else {
+            try {
+                // Stage files
+                $this->filesToCommit = $this->stageFiles();
+            } catch (UserCancelException $exception) {
+                return $exception->getCode();
+            }
+            $this->info('Staged files: '.implode(', ', $this->filesToCommit));
         }
 
-        $this->info('Staged files: '.implode(', ', $this->filesToCommit));
 
         // Create message
         $this->commitMessage = $this->createMessage();
