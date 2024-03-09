@@ -56,6 +56,9 @@ class Commit extends Command
                 if ($menu->getSelectedItem()->getText() === 'Select all files [A]') {
                     $menu->close();
                 }
+                if ($menu->getSelectedItem()->getText() === 'Stage selected [S]') {
+                    $menu->close();
+                }
             };
             $items = array_map(
                 fn (string $file): array => [
@@ -68,12 +71,13 @@ class Commit extends Command
             $menu = (new CliMenuBuilder)
                 ->setTitle('Select files to commit')
                 ->setTitleSeparator('')
+                ->disableDefaultItems()
                 ->enableAutoShortcuts()
                 ->addRadioItem('Select all files [A]', $itemCallable)
                 ->addLineBreak('')
                 ->addCheckboxItems($items)
                 ->addLineBreak('')
-                ->setExitButtonText('Next [N]')
+                ->addRadioItem('Stage selected [S]', $itemCallable)
                 ->build();
 
             $menu->open();
