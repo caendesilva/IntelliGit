@@ -14,12 +14,15 @@ class SimpleFileDiff
     readonly public array $oldLines;
     readonly public array $newLines;
 
-    protected function __construct(string $file, array $contents, array $oldLines, array $newLines)
+    protected array $metadata;
+
+    protected function __construct(string $file, array $contents, array $oldLines, array $newLines, array $metadata = [])
     {
         $this->file = $file;
         $this->contents = $contents;
         $this->oldLines = $oldLines;
         $this->newLines = $newLines;
+        $this->metadata = $metadata;
     }
 
     public static function parse(string $file): SimpleFileDiff
@@ -31,6 +34,7 @@ class SimpleFileDiff
         if (blank(trim($diff))) {
             // Check if file is new
             $diff = $git->exec("git diff /dev/null $file");
+            $wasRecentlyCreated = true;
         }
 
         $lines = explode("\n", $diff);
@@ -52,7 +56,13 @@ class SimpleFileDiff
             $file,
             $contents,
             $oldLines,
-            $newLines
+            $newLines,
+            ['wasRecentlyCreated' => $wasRecentlyCreated ?? false]
         );
+    }
+
+    public function wasRecentlyCreated(): bool
+    {
+        return $this->metadata['wasRecentlyCreated'] ?? false;
     }
 }
