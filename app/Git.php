@@ -55,7 +55,7 @@ class Git
     /** @return array<string> */
     public function getChangedFiles(): array
     {
-        return array_filter(explode("\n", trim($this->exec('git diff --name-only'))));
+        return array_filter(explode("\n", trim($this->exec('git ls-files --others --modified --exclude-standard'))));
     }
 
     public function commit(array $files, string $message): void
