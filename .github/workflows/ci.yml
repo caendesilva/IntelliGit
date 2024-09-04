@@ -83,7 +83,7 @@ jobs:
         run: rm -rf builds/igit
 
       - name: Download executable artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4.1.7
         with:
           name: igit
           path: builds
